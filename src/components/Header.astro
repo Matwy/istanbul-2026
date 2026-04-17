@@ -132,7 +132,7 @@ const isHome = pathname === '/';
     role="dialog"
     aria-modal="true"
     aria-label="Menu di navigazione"
-    class="invisible fixed inset-0 top-0 z-40 flex flex-col bg-[var(--color-paper)] opacity-0 transition-opacity duration-200 md:hidden"
+    class="invisible fixed inset-0 top-0 z-40 flex h-dvh w-screen flex-col bg-[var(--color-paper)] opacity-0 transition-opacity duration-200 md:hidden"
   >
     <div class="flex items-center justify-between px-4 py-3">
       <span class="font-[var(--font-display)] text-xl font-semibold text-[var(--color-iznik-dark)]">
@@ -244,6 +244,10 @@ const isHome = pathname === '/';
   function initHeader() {
     const header = document.getElementById('site-header');
     if (!header) return;
+    // Idempotent: avoid double-binding when Astro view transitions re-fire page-load
+    // on an already-persistent header element.
+    if (header.dataset.headerInit === 'true') return;
+    header.dataset.headerInit = 'true';
 
     const updateScrolled = () => {
       if (window.scrollY > 24) header.setAttribute('data-scrolled', 'true');
@@ -255,24 +259,24 @@ const isHome = pathname === '/';
     const dropdown = header.querySelector<HTMLElement>('[data-dropdown]');
     const trigger = header.querySelector<HTMLButtonElement>('[data-dropdown-trigger]');
     if (dropdown && trigger) {
-      const close = () => {
+      const closeDropdown = () => {
         dropdown.removeAttribute('data-open');
         trigger.setAttribute('aria-expanded', 'false');
       };
-      const open = () => {
+      const openDropdown = () => {
         dropdown.setAttribute('data-open', 'true');
         trigger.setAttribute('aria-expanded', 'true');
       };
       trigger.addEventListener('click', (e) => {
         e.stopPropagation();
-        if (dropdown.hasAttribute('data-open')) close();
-        else open();
+        if (dropdown.hasAttribute('data-open')) closeDropdown();
+        else openDropdown();
       });
       document.addEventListener('click', (e) => {
-        if (!dropdown.contains(e.target as Node)) close();
+        if (!dropdown.contains(e.target as Node)) closeDropdown();
       });
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') close();
+        if (e.key === 'Escape') closeDropdown();
       });
     }
 
@@ -317,6 +321,9 @@ const isHome = pathname === '/';
     }
   }
 
+  // Run on initial load and on every Astro view-transition navigation.
+  // The `headerInit` flag inside prevents double-binding when the header DOM
+  // is preserved across transitions.
   initHeader();
   document.addEventListener('astro:page-load', initHeader);
 </script>
