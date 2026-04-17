@@ -224,36 +224,35 @@
 
   .filters {
     display: flex;
-    flex-wrap: nowrap;
-    gap: 0.5rem;
-    overflow-x: auto;
-    padding: 0.25rem 0.1rem 0.5rem;
-    scrollbar-width: thin;
-  }
-
-  @media (min-width: 768px) {
-    .filters {
-      flex-wrap: wrap;
-      overflow-x: visible;
-    }
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 0.25rem 0 0.5rem;
   }
 
   .filter-chip {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
     min-height: 44px;
-    padding: 0.5rem 0.85rem;
+    padding: 0.45rem 0.75rem;
     border: 1.5px solid rgba(27, 58, 107, 0.2);
     background: var(--color-paper, #fffdf7);
     color: var(--color-iznik, #1b3a6b);
     border-radius: 999px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
     white-space: nowrap;
     transition: background 0.15s ease, border-color 0.15s ease,
       box-shadow 0.15s ease;
+  }
+
+  @media (min-width: 768px) {
+    .filter-chip {
+      gap: 0.5rem;
+      padding: 0.5rem 0.85rem;
+      font-size: 0.9rem;
+    }
   }
 
   .filter-chip:hover {
