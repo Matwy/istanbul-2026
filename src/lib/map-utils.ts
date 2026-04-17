@@ -3,8 +3,22 @@ export function buildGoogleMapsUrl(lat: number, lng: number, label?: string): st
   return `https://www.google.com/maps/search/?api=1&query=${query}&center=${lat},${lng}`;
 }
 
+const HEX_COLOR = /^#[0-9A-Fa-f]{3,8}$/;
+
+function sanitizeColor(color: string): string {
+  return HEX_COLOR.test(color) ? color : '#1B3A6B';
+}
+
+function escapeXmlText(s: string): string {
+  return s.replace(
+    /[&<>"']/g,
+    (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c] as string
+  );
+}
+
 export function buildPinSvg(color: string, label?: string): string {
-  const text = label ?? '';
+  const safeColor = sanitizeColor(color);
+  const text = label ? escapeXmlText(label) : '';
   return `
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="42" viewBox="0 0 32 42">
   <defs>
@@ -16,9 +30,9 @@ export function buildPinSvg(color: string, label?: string): string {
     </filter>
   </defs>
   <g filter="url(#shadow)">
-    <path d="M16 1 C8 1 2 7 2 15 C2 26 16 41 16 41 C16 41 30 26 30 15 C30 7 24 1 16 1 Z" fill="${color}" stroke="#FAF7F0" stroke-width="1.5"/>
+    <path d="M16 1 C8 1 2 7 2 15 C2 26 16 41 16 41 C16 41 30 26 30 15 C30 7 24 1 16 1 Z" fill="${safeColor}" stroke="#FAF7F0" stroke-width="1.5"/>
     <circle cx="16" cy="15" r="5" fill="#FAF7F0"/>
-    ${text ? `<text x="16" y="18" text-anchor="middle" font-size="8" font-weight="700" fill="${color}" font-family="Inter, sans-serif">${text}</text>` : ''}
+    ${text ? `<text x="16" y="18" text-anchor="middle" font-size="8" font-weight="700" fill="${safeColor}" font-family="Inter, sans-serif">${text}</text>` : ''}
   </g>
 </svg>`;
 }

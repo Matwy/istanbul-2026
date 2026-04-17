@@ -1,11 +1,11 @@
 export const TRIP = {
-  start: '2026-10-29',
-  end: '2026-11-02',
-  startLabel: '29 ottobre',
-  endLabel: '2 novembre',
+  start: '2026-04-29',
+  end: '2026-05-03',
+  startLabel: '29 aprile',
+  endLabel: '3 maggio',
   year: 2026,
   title: 'Istanbul 2026',
-  subtitle: 'Gita di famiglia · 29 ottobre – 2 novembre',
+  subtitle: 'Gita Tognato Family · 29 aprile – 3 maggio',
 } as const;
 
 export const EXCHANGE = {

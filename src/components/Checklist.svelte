@@ -12,7 +12,9 @@
   let hydrated = $state(false);
 
   onMount(() => {
-    state = loadChecklist();
+    const loaded = loadChecklist();
+    state = loaded;
+    // Set hydrated last so the save-effect never fires before state is loaded.
     hydrated = true;
   });
 

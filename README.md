@@ -1,6 +1,6 @@
 # Istanbul 2026
 
-Sito per la gita di famiglia a Istanbul dal 29 ottobre al 2 novembre 2026.
+Sito per la gita Tognato Family a Istanbul dal 29 aprile al 3 maggio 2026.
 
 Stack: **Astro 5** · **Svelte 5** (runes) · **Tailwind CSS 4** · **TypeScript** · **Leaflet** · **Motion**.
 Build statico → hostabile su qualsiasi CDN. Deploy target: **Render.com static site**.

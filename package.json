@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "private": true,
-  "description": "Sito per gita famiglia a Istanbul (29 ott - 2 nov 2026)",
+  "description": "Sito per gita Tognato Family a Istanbul (29 apr - 3 mag 2026)",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

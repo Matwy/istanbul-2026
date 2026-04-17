@@ -3,8 +3,8 @@
   import { onMount } from 'svelte';
   import { animate } from 'motion';
 
-  const tripStart = new Date('2026-10-29T00:00:00');
-  const tripEnd = new Date('2026-11-02T23:59:59');
+  const tripStart = new Date('2026-04-29T00:00:00');
+  const tripEnd = new Date('2026-05-03T23:59:59');
 
   function computeDays(): number {
     const now = new Date();
