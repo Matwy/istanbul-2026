@@ -1,0 +1,11 @@
+{
+  "title": "All'arrivo in aeroporto (IST)",
+  "icon": "plane-landing",
+  "order": 4,
+  "items": [
+    { "id": "air-1", "label": "Comprare Istanbulkart alle macchinette gialle fuori dagli arrivi", "note": "Carta rossa: si ricarica, si usa in più persone. 165 TL + 35 TL a corsa" },
+    { "id": "air-2", "label": "Caricare subito con almeno 200 TL" },
+    { "id": "air-3", "label": "Metro M11 + M2 verso hotel", "note": "Evita taxi, costa molto di più" },
+    { "id": "air-4", "label": "Cambio piccola somma se non hai Revolut" }
+  ]
+}

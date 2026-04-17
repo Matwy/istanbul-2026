@@ -1,0 +1,14 @@
+{
+  "name": "Torre della Fanciulla",
+  "turkishName": "Kız Kulesi",
+  "lat": 41.0211,
+  "lng": 29.0041,
+  "priceEur": null,
+  "priceTl": 350,
+  "bookOnline": true,
+  "shortDesc": "Isolotto con torre medievale in mezzo al Bosforo, simbolo della città. Restaurata di recente.",
+  "notes": "~350 TL + traghetto dalla riva asiatica. Anche semplicemente vista dal lungomare di Üsküdar è incantevole.",
+  "category": "optional",
+  "emoji": "🗼",
+  "image": "/img/attractions/kiz-kulesi.jpg"
+}

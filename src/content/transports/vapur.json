@@ -1,0 +1,8 @@
+{
+  "name": "Traghetto",
+  "turkishName": "Vapur",
+  "icon": "ship",
+  "description": "Collega Europa e Asia. Tra le esperienze più belle di Istanbul, soprattutto al tramonto. Tè a bordo.",
+  "tips": "Eminönü ↔ Kadıköy (20 min) o ↔ Üsküdar. Anche da Karaköy e Beşiktaş. Paga con Istanbulkart.",
+  "order": 3
+}

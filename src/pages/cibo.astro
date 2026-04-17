@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Card from '@/components/ui/Card.astro';
+import Chip from '@/components/ui/Chip.astro';
+
+const dishes = (await getCollection('dishes')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base
+  title="Cibo turco"
+  description="12 piatti da provare a Istanbul: classici, street food e dolci della tradizione turca."
+>
+  <section class="mx-auto max-w-6xl px-4 pt-12 pb-8 md:px-6 md:pt-16">
+    <header class="max-w-2xl">
+      <p class="text-xs font-medium uppercase tracking-[0.25em] text-[var(--color-gold-deep)]">
+        Sapori di Istanbul
+      </p>
+      <h1 class="mt-2 font-[var(--font-display)] text-5xl font-semibold text-[var(--color-iznik-dark)] md:text-6xl">
+        12 piatti da provare
+      </h1>
+      <p class="mt-3 text-[var(--color-ink-soft)]">
+        Dai grandi classici allo street food: la cucina turca è incontro di mondi. Prendine nota.
+      </p>
+    </header>
+  </section>
+
+  <div class="divider-ornament mx-auto max-w-3xl px-6" aria-hidden="true">
+    <img src="/patterns/divider.svg" alt="" width="72" height="16" loading="lazy" />
+  </div>
+
+  <section class="mx-auto max-w-6xl px-4 py-10 md:px-6 md:py-14">
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {dishes.map((dish) => (
+        <Card class="flex h-full flex-col p-5">
+          <div
+            class="dish-hero -mx-5 -mt-5 mb-4 flex h-32 items-center justify-center overflow-hidden rounded-t-[var(--radius-card)]"
+            aria-hidden="true"
+          >
+            <span class="text-6xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.25)]">{dish.data.emoji}</span>
+          </div>
+          <h2 class="font-[var(--font-display)] text-xl font-semibold text-[var(--color-iznik-dark)]">
+            {dish.data.name}
+          </h2>
+          <p class="mt-2 flex-1 text-sm text-[var(--color-ink-soft)] text-pretty">
+            {dish.data.description}
+          </p>
+          {dish.data.badges.length > 0 && (
+            <div class="mt-3 flex flex-wrap gap-1.5">
+              {dish.data.badges.map((b, i) => {
+                const variants = ['gold', 'iznik', 'neutral', 'garnet'] as const;
+                return <Chip variant={variants[i % variants.length]}>{b}</Chip>;
+              })}
+            </div>
+          )}
+        </Card>
+      ))}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .dish-hero {
+    background:
+      radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--color-gold-bright) 35%, transparent), transparent 65%),
+      linear-gradient(135deg, var(--color-cream) 0%, color-mix(in oklab, var(--color-gold) 25%, var(--color-cream)) 100%);
+  }
+</style>

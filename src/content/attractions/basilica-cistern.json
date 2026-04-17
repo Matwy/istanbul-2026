@@ -1,0 +1,15 @@
+{
+  "name": "Basilica Cisterna",
+  "turkishName": "Yerebatan Sarnıcı",
+  "lat": 41.0084,
+  "lng": 28.9778,
+  "priceEur": 37,
+  "priceTl": 1950,
+  "bookOnline": true,
+  "shortDesc": "Cisterna sotterranea bizantina del VI sec. con 336 colonne, atmosfera misteriosa e le celebri teste di Medusa.",
+  "notes": "Orari 9-22. Prezzo giorno 9-18:30 (37 €/1950 TL), sera dopo 19:30 (57 €/3000 TL). Consigliato biglietto online.",
+  "dayId": "g2",
+  "category": "must",
+  "emoji": "🏛️",
+  "image": "/img/attractions/basilica-cistern.jpg"
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Documenti & denaro",
+  "icon": "wallet",
+  "order": 1,
+  "items": [
+    { "id": "doc-1", "label": "Carta d'identità valida per espatrio (o passaporto)", "note": "Controlla scadenza almeno 6 mesi" },
+    { "id": "doc-2", "label": "Revolut attivata e fondi caricati", "note": "Pagare sempre con questa per cambio ottimo" },
+    { "id": "doc-3", "label": "Contante minimo in euro per emergenza" },
+    { "id": "doc-4", "label": "Verifica copertura assicurazione sanitaria" },
+    { "id": "doc-5", "label": "Stampa prenotazioni (Booking non funziona in Turchia)" }
+  ]
+}

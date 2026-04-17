@@ -1,0 +1,8 @@
+{
+  "name": "Tram",
+  "turkishName": "Tramvay (T)",
+  "icon": "tram-front",
+  "description": "Efficiente e panoramico. T1 attraversa tutto il centro storico, T2 è il tram storico rosso su Istiklal.",
+  "tips": "T1 da Kabataş a Bağcılar passa per Sultanahmet: usalo per spostarti tra le attrazioni principali. Spesso molto affollato.",
+  "order": 2
+}

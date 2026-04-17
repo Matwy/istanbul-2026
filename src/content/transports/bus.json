@@ -1,0 +1,8 @@
+{
+  "name": "Bus",
+  "turkishName": "Otobüs",
+  "icon": "bus",
+  "description": "Rete capillare ma rallentata dal traffico. Usalo solo se sai dove stai andando o se la metro non arriva lì.",
+  "tips": "Scarica l'app IETT per orari e percorsi. Metrobus (BRT) ha corsia dedicata, molto più veloce.",
+  "order": 4
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Baklava",
+  "description": "Dolce a strati sottilissimi di pasta fillo, farcito con pistacchi o noci, bagnato di sciroppo di miele.",
+  "badges": [
+    "dolce"
+  ],
+  "emoji": "🍯",
+  "image": "/img/dishes/baklava.jpg",
+  "order": 9
+}

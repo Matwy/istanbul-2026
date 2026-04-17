@@ -1,0 +1,83 @@
+---
+/**
+ * SectionHeading — intestazione standardizzata per sezioni
+ * Props:
+ *  - eyebrow?: supertitolo piccolo uppercase oro
+ *  - title: titolo principale (obbligatorio)
+ *  - description?: sottotitolo descrittivo
+ *  - align: 'left' | 'center' (default 'left')
+ *  - level: 'h1' | 'h2' | 'h3' (default 'h2')
+ */
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  align?: 'left' | 'center';
+  level?: 'h1' | 'h2' | 'h3';
+  class?: string;
+  id?: string;
+}
+const {
+  eyebrow,
+  title,
+  description,
+  align = 'left',
+  level = 'h2',
+  class: cls = '',
+  id,
+} = Astro.props;
+
+const HeadingTag = level;
+const headingClass = level === 'h1' ? 'heading-display' : 'heading-section';
+---
+
+<header
+  class:list={[
+    'section-heading',
+    align === 'center' && 'section-heading--center',
+    cls,
+  ]}
+>
+  {eyebrow && <span class="eyebrow section-heading__eyebrow">{eyebrow}</span>}
+  <HeadingTag id={id} class:list={[headingClass, 'section-heading__title']}>
+    {title}
+  </HeadingTag>
+  {
+    description && (
+      <p class="section-heading__desc">{description}</p>
+    )
+  }
+</header>
+
+<style>
+  .section-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 1.75rem;
+  }
+  .section-heading--center {
+    align-items: center;
+    text-align: center;
+  }
+  .section-heading__eyebrow {
+    margin-bottom: 0.25rem;
+  }
+  .section-heading__title {
+    margin: 0;
+  }
+  .section-heading__desc {
+    max-width: 60ch;
+    margin-top: 0.375rem;
+    color: var(--color-ink-soft);
+    font-size: 1rem;
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+  @media (min-width: 768px) {
+    .section-heading {
+      margin-bottom: 2.25rem;
+    }
+  }
+</style>

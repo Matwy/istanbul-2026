@@ -1,0 +1,10 @@
+{
+  "name": "Midye Dolma",
+  "description": "Cozze ripiene di riso speziato con pinoli, uvetta e cannella. Vendute a peso sui carretti per strada.",
+  "badges": [
+    "street food"
+  ],
+  "emoji": "🐚",
+  "image": "/img/dishes/midye-dolma.jpg",
+  "order": 11
+}

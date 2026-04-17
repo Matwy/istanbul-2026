@@ -1,0 +1,10 @@
+{
+  "name": "Pide",
+  "description": "Focaccia ottomana a forma di barca, con ripieni di formaggio, carne, uovo o sucuk. La versione turca della pizza.",
+  "badges": [
+    "da condividere"
+  ],
+  "emoji": "🍕",
+  "image": "/img/dishes/pide.jpg",
+  "order": 12
+}

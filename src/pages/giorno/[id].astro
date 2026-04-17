@@ -1,0 +1,183 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Timeline from '@/components/Timeline.astro';
+import Button from '@/components/ui/Button.astro';
+import MiniMap from '@/components/MiniMap.svelte';
+import { formatDateLong } from '@/lib/date.ts';
+import { buildGoogleMapsUrl } from '@/lib/map-utils.ts';
+
+export const getStaticPaths = (async () => {
+  const days = await getCollection('days');
+  return days
+    .sort((a, b) => a.data.order - b.data.order)
+    .map((day) => ({
+      params: { id: String(day.data.order) },
+      props: { dayId: day.id },
+    }));
+}) satisfies GetStaticPaths;
+
+const { dayId } = Astro.props;
+const days = (await getCollection('days')).sort((a, b) => a.data.order - b.data.order);
+const day = days.find((d) => d.id === dayId)!;
+const attractions = await getCollection('attractions');
+const stops = day.data.stopIds
+  .map((sid) => attractions.find((a) => a.id === sid))
+  .filter((a): a is NonNullable<typeof a> => Boolean(a));
+
+const dateFormatted = formatDateLong(day.data.date);
+const color = day.data.color;
+
+const prevDay = days.find((d) => d.data.order === day.data.order - 1);
+const nextDay = days.find((d) => d.data.order === day.data.order + 1);
+
+const isArrival = day.data.order === 1;
+const isDeparture = day.data.order === days.length;
+const emptyDay = stops.length === 0;
+
+const mapPoints = stops.map((s) => ({
+  lat: s.data.lat,
+  lng: s.data.lng,
+  name: s.data.name,
+  id: s.id,
+  googleMapsUrl: buildGoogleMapsUrl(s.data.lat, s.data.lng, s.data.name),
+}));
+---
+
+<Base
+  title={`Giorno ${day.data.order} · ${day.data.title}`}
+  description={`Itinerario del ${dateFormatted}: ${day.data.subtitle}`}
+>
+  <section class="day-hero relative overflow-hidden" style={`--day-color: ${color};`}>
+    <div class="day-hero-bg" aria-hidden="true"></div>
+    <div class="mx-auto max-w-5xl px-4 py-14 md:px-6 md:py-20">
+      <p class="text-xs font-medium uppercase tracking-[0.25em] text-[color-mix(in_oklab,var(--color-paper)_75%,transparent)]">
+        Giorno {day.data.order} di {days.length} · {day.data.weekday}
+      </p>
+      <h1 class="mt-3 font-[var(--font-display)] text-5xl font-semibold leading-tight text-[var(--color-paper)] md:text-6xl">
+        {day.data.title}
+      </h1>
+      <p class="mt-3 max-w-2xl text-lg text-[color-mix(in_oklab,var(--color-paper)_85%,transparent)]">
+        {day.data.subtitle}
+      </p>
+      <p class="mt-6 text-sm text-[color-mix(in_oklab,var(--color-paper)_75%,transparent)]">
+        {dateFormatted}
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-4 py-12 md:px-6 md:py-16">
+    {emptyDay ? (
+      <div class="rounded-[var(--radius-card)] border border-[color-mix(in_oklab,var(--color-iznik)_15%,transparent)] bg-[var(--color-paper)] p-6 shadow-[var(--shadow-card)] md:p-10">
+        {isArrival ? (
+          <>
+            <h2 class="font-[var(--font-display)] text-3xl font-semibold text-[var(--color-iznik-dark)]">
+              Giornata di arrivo
+            </h2>
+            <p class="mt-3 text-[var(--color-ink-soft)]">
+              Atterraggio a Istanbul. Giornata dedicata al trasferimento in hotel, al primo riposo e a una passeggiata leggera per ambientarsi.
+            </p>
+            <div class="mt-6 space-y-3 text-sm text-[var(--color-ink-soft)]">
+              <p>
+                <strong class="text-[var(--color-iznik-dark)]">Aeroporti:</strong> IST (nuovo, lato europeo) o SAW (Sabiha Gökçen, lato asiatico). Verifica sempre su quale atterri.
+              </p>
+              <p>
+                <strong class="text-[var(--color-iznik-dark)]">Trasferimento:</strong> dal IST, HAVAIST bus verso Taksim o Sultanahmet (~100 TL, 60-90 min). Da SAW, HAVABUS o taxi. Alternativa comoda: taxi ufficiale diretto all'hotel.
+              </p>
+              <p>
+                <strong class="text-[var(--color-iznik-dark)]">Istanbulkart:</strong> acquista la carta trasporti già in aeroporto per iniziare a muoverti subito (165 TL la carta + ricarica).
+              </p>
+            </div>
+          </>
+        ) : isDeparture ? (
+          <>
+            <h2 class="font-[var(--font-display)] text-3xl font-semibold text-[var(--color-iznik-dark)]">
+              Giornata di partenza
+            </h2>
+            <p class="mt-3 text-[var(--color-ink-soft)]">
+              Colazione con calma, ultima passeggiata e rientro in aeroporto. Parti con ampio anticipo: il traffico di Istanbul può sorprendere.
+            </p>
+            <div class="mt-6 space-y-3 text-sm text-[var(--color-ink-soft)]">
+              <p>
+                <strong class="text-[var(--color-iznik-dark)]">Anticipo:</strong> almeno 3h prima di un volo internazionale. Preventiva 90 min per il transfer in città in orario di punta.
+              </p>
+              <p>
+                <strong class="text-[var(--color-iznik-dark)]">Ultimi acquisti:</strong> Spice Bazaar o Grand Bazaar per spezie, delizie turche, tè. Duty-free in aeroporto ben fornito.
+              </p>
+              <p>
+                <strong class="text-[var(--color-iznik-dark)]">Check-out:</strong> molti hotel consentono il deposito bagagli fino al trasferimento.
+              </p>
+            </div>
+          </>
+        ) : (
+          <p class="text-[var(--color-ink-soft)]">Nessuna tappa programmata per questo giorno.</p>
+        )}
+      </div>
+    ) : (
+      <>
+        <Timeline stops={stops} color={color} />
+
+        <div class="mt-16">
+          <header class="mb-6">
+            <h2 class="font-[var(--font-display)] text-3xl font-semibold text-[var(--color-iznik-dark)]">
+              Mappa del giorno
+            </h2>
+            <p class="mt-1 text-sm text-[var(--color-ink-soft)]">
+              Tutte le tappe di oggi su mappa interattiva.
+            </p>
+          </header>
+          <div class="overflow-hidden rounded-[var(--radius-card)] border border-[color-mix(in_oklab,var(--color-iznik)_10%,transparent)] shadow-[var(--shadow-card)]">
+            <MiniMap client:visible points={mapPoints} color={color} />
+          </div>
+        </div>
+      </>
+    )}
+  </section>
+
+  <nav aria-label="Navigazione giorni" class="mx-auto max-w-5xl px-4 pb-16 md:px-6">
+    <div class="flex items-center justify-between gap-3 border-t border-[color-mix(in_oklab,var(--color-iznik)_10%,transparent)] pt-6">
+      {prevDay ? (
+        <Button href={`/giorno/${prevDay.data.order}`} variant="ghost" size="sm">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Giorno {prevDay.data.order}: {prevDay.data.title}</span>
+        </Button>
+      ) : <span></span>}
+      {nextDay ? (
+        <Button href={`/giorno/${nextDay.data.order}`} variant="ghost" size="sm">
+          <span>Giorno {nextDay.data.order}: {nextDay.data.title}</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </Button>
+      ) : <span></span>}
+    </div>
+  </nav>
+</Base>
+
+<style>
+  .day-hero {
+    color: var(--color-paper);
+  }
+  .day-hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg, var(--day-color) 0%, color-mix(in oklab, var(--day-color) 70%, var(--color-iznik-dark)) 100%);
+    z-index: -1;
+  }
+  .day-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/patterns/stella-8.svg');
+    background-size: 160px 160px;
+    opacity: 0.1;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+</style>

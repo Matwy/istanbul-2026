@@ -1,0 +1,10 @@
+{
+  "name": "Balık Ekmek",
+  "description": "Panino con filetto di pesce grigliato sul momento, cipolla e limone. Si mangia al Ponte di Galata.",
+  "badges": [
+    "street food"
+  ],
+  "emoji": "🐟",
+  "image": "/img/dishes/balik-ekmek.jpg",
+  "order": 3
+}

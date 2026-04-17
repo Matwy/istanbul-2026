@@ -1,0 +1,85 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Card from '@/components/ui/Card.astro';
+import Chip from '@/components/ui/Chip.astro';
+import Button from '@/components/ui/Button.astro';
+import AttractionImage from '@/components/AttractionImage.astro';
+import { buildGoogleMapsUrl } from '@/lib/map-utils.ts';
+
+interface Props {
+  attraction: CollectionEntry<'attractions'>;
+  priority?: boolean;
+  dayColor?: string;
+}
+
+const { attraction, dayColor } = Astro.props;
+const a = attraction.data;
+const mapsUrl = buildGoogleMapsUrl(a.lat, a.lng, a.name);
+const closedTuesday = /chius[oa]\s+(il\s+)?marted/i.test(a.notes);
+const priceLabel =
+  a.priceEur === null
+    ? null
+    : a.priceEur === 0
+      ? 'Ingresso libero'
+      : `${a.priceEur} €`;
+---
+
+<Card class="flex h-full flex-col">
+  <AttractionImage
+    name={a.name}
+    emoji={a.emoji}
+    image={a.image ?? null}
+    dayColor={dayColor}
+  />
+
+  <div class="flex flex-1 flex-col gap-3 p-5">
+    <div>
+      <h3 class="font-[var(--font-display)] text-2xl font-semibold text-[var(--color-iznik-dark)] leading-tight">
+        {a.name}
+      </h3>
+      {a.turkishName && (
+        <p class="mt-1 text-sm italic text-[var(--color-ink-faint)]">{a.turkishName}</p>
+      )}
+    </div>
+
+    {a.shortDesc && (
+      <p class="text-sm text-[var(--color-ink-soft)] text-pretty">{a.shortDesc}</p>
+    )}
+
+    <div class="flex flex-wrap gap-1.5">
+      {priceLabel && (
+        <Chip variant="gold">{priceLabel}</Chip>
+      )}
+      {a.bookOnline && (
+        <Chip variant="iznik">Prenota online</Chip>
+      )}
+      {closedTuesday && (
+        <Chip variant="garnet">Chiuso il martedì</Chip>
+      )}
+      {a.category === 'optional' && (
+        <Chip variant="neutral">Opzionale</Chip>
+      )}
+    </div>
+
+    <div class="rounded-lg bg-[var(--color-cream)] p-3 text-xs leading-relaxed text-[var(--color-ink-soft)]">
+      <span class="font-semibold text-[var(--color-iznik)]">Note: </span>
+      {a.notes}
+    </div>
+
+    <div class="mt-auto flex items-center gap-2 pt-1">
+      <Button
+        href={mapsUrl}
+        target="_blank"
+        variant="secondary"
+        size="sm"
+        aria-label={`Apri ${a.name} in Google Maps`}
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 10c0 7-8 13-8 13s-8-6-8-13a8 8 0 0 1 16 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        Apri in Maps
+      </Button>
+    </div>
+  </div>
+</Card>

@@ -1,0 +1,11 @@
+{
+  "name": "Simit",
+  "description": "Ciambella di pane ricoperta di sesamo. La colazione turca per eccellenza, venduta dai carretti ambulanti all'alba.",
+  "badges": [
+    "colazione",
+    "street food"
+  ],
+  "emoji": "🥯",
+  "image": "/img/dishes/simit.jpg",
+  "order": 1
+}

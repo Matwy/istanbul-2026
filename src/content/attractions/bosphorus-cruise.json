@@ -1,0 +1,15 @@
+{
+  "name": "Crociera sul Bosforo",
+  "turkishName": "Boğaz Turu",
+  "lat": 41.0199,
+  "lng": 28.9739,
+  "priceEur": null,
+  "priceTl": null,
+  "bookOnline": false,
+  "shortDesc": "Navigazione lungo lo stretto che separa Europa e Asia: ponti, palazzi, fortezze, ville ottomane sulle rive.",
+  "notes": "Partenza da Eminönü. Opzione turistica (breve, costosa) o traghetto pubblico IDO fino al Mar Nero (tutto il giorno, pochi euro).",
+  "dayId": "g4",
+  "category": "must",
+  "emoji": "⛴️",
+  "image": "/img/attractions/bosphorus-cruise.jpg"
+}

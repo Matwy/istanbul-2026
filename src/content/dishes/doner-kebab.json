@@ -1,0 +1,10 @@
+{
+  "name": "Döner Kebab",
+  "description": "Carne (agnello o pollo) cotta su spiedo verticale, servita in pita, dürüm o su piatto con riso.",
+  "badges": [
+    "street food"
+  ],
+  "emoji": "🥙",
+  "image": "/img/dishes/doner-kebab.jpg",
+  "order": 2
+}

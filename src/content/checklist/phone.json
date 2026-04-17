@@ -1,0 +1,12 @@
+{
+  "title": "Telefono & connettività",
+  "icon": "smartphone",
+  "order": 2,
+  "items": [
+    { "id": "tel-1", "label": "Attivare e-SIM turca (se cellulare compatibile)", "note": "NON comprare SIM fisica in aeroporto, prezzo gonfiato" },
+    { "id": "tel-2", "label": "Scaricare app Uber e Bitaksi", "note": "Tassametro trasparente, il taxi fermato al volo frega" },
+    { "id": "tel-3", "label": "Scaricare app IETT per i bus" },
+    { "id": "tel-4", "label": "Scaricare Google Maps offline di Istanbul" },
+    { "id": "tel-5", "label": "Salvare questo sito come app (opzionale)", "note": "Browser → Aggiungi a schermata Home" }
+  ]
+}

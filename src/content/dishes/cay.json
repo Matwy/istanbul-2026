@@ -1,0 +1,10 @@
+{
+  "name": "Çay",
+  "description": "Tè nero forte servito in bicchierini a tulipano, con zolletta di zucchero. Rituale sociale irrinunciabile.",
+  "badges": [
+    "bevanda"
+  ],
+  "emoji": "🍵",
+  "image": "/img/dishes/cay.jpg",
+  "order": 7
+}

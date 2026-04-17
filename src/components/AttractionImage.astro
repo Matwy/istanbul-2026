@@ -1,0 +1,67 @@
+---
+interface Props {
+  name: string;
+  emoji?: string;
+  image?: string | null;
+  dayColor?: string;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+const {
+  name,
+  emoji = '📍',
+  image = null,
+  dayColor,
+  class: cls = '',
+  loading = 'lazy',
+} = Astro.props;
+
+const gradient = dayColor
+  ? `linear-gradient(135deg, ${dayColor} 0%, var(--color-iznik) 45%, var(--color-gold) 100%)`
+  : 'linear-gradient(135deg, var(--color-iznik-dark) 0%, var(--color-iznik) 45%, var(--color-gold) 100%)';
+---
+
+<div
+  class:list={['relative h-[220px] w-full overflow-hidden bg-[var(--color-iznik-dark)]', cls]}
+  role="img"
+  aria-label={name}
+>
+  {image ? (
+    <>
+      <img
+        src={image}
+        alt={name}
+        loading={loading}
+        decoding="async"
+        class="absolute inset-0 h-full w-full object-cover"
+      />
+      <div
+        class="pointer-events-none absolute inset-0 opacity-[0.12] mix-blend-overlay"
+        style="background-image: url('/patterns/stella-8.svg'); background-size: 140px 140px;"
+        aria-hidden="true"
+      ></div>
+    </>
+  ) : (
+    <>
+      <div class="absolute inset-0" style={`background-image: ${gradient};`}></div>
+      <div
+        class="absolute inset-0 opacity-[0.18] mix-blend-overlay"
+        style="background-image: url('/patterns/stella-8.svg'); background-size: 120px 120px;"
+        aria-hidden="true"
+      ></div>
+      <div class="absolute inset-0 grid place-items-center">
+        <span
+          class="select-none text-[96px] leading-none drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)]"
+          aria-hidden="true"
+        >
+          {emoji}
+        </span>
+      </div>
+    </>
+  )}
+
+  <div
+    class="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/55 via-black/15 to-transparent"
+    aria-hidden="true"
+  ></div>
+</div>

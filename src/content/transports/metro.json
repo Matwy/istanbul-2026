@@ -1,0 +1,8 @@
+{
+  "name": "Metro",
+  "turkishName": "Metro (M)",
+  "icon": "train",
+  "description": "Rete moderna e in espansione. Utile per tratte lunghe e per arrivare dall'aeroporto (M11 + M2).",
+  "tips": "Linee M1 (città vecchia-aeroporto vecchio), M2 (Taksim-Hacıosman), M11 (nuovo aeroporto IST). Aria condizionata, puntualità.",
+  "order": 1
+}

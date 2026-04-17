@@ -1,0 +1,66 @@
+---
+/**
+ * HeroOrnament — SVG decorativo ottomano riutilizzabile nei hero
+ * Stella 8 punte elaborata + cornice circolare + dettagli bizantini
+ * Props:
+ *  - size: dimensione in px (default 80)
+ *  - color: colore primario (default oro)
+ *  - class: classi extra
+ *  - label: se presente rende l'ornamento parte del contenuto accessibile
+ */
+interface Props {
+  size?: number;
+  color?: string;
+  class?: string;
+  label?: string;
+}
+const {
+  size = 80,
+  color = 'var(--color-gold)',
+  class: cls = '',
+  label,
+} = Astro.props;
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 100 100"
+  fill="none"
+  class:list={['hero-ornament', cls]}
+  role={label ? 'img' : 'presentation'}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+>
+  <g stroke={color} stroke-width="1" stroke-linejoin="round" fill="none">
+    {/* Cornice esterna circolare */}
+    <circle cx="50" cy="50" r="46" opacity="0.35" />
+    <circle cx="50" cy="50" r="42" opacity="0.55" />
+
+    {/* Stella a 8 punte principale (due quadrati sovrapposti ruotati 45°) */}
+    <path d="M50 10 L58 32 L80 40 L88 50 L80 60 L58 68 L50 90 L42 68 L20 60 L12 50 L20 40 L42 32 Z" opacity="0.9" />
+    <path d="M50 15 L57 35 L77 42 L82 50 L77 58 L57 65 L50 85 L43 65 L23 58 L18 50 L23 42 L43 35 Z" opacity="0.5" />
+
+    {/* Stella interna riempita */}
+    <path
+      d="M50 28 L55 43 L70 48 L55 53 L50 72 L45 53 L30 48 L45 43 Z"
+      fill={color}
+      fill-opacity="0.2"
+    />
+
+    {/* Raggi cardinali (N/S/E/W) */}
+    <line x1="50" y1="4" x2="50" y2="10" opacity="0.5" />
+    <line x1="50" y1="90" x2="50" y2="96" opacity="0.5" />
+    <line x1="4" y1="50" x2="10" y2="50" opacity="0.5" />
+    <line x1="90" y1="50" x2="96" y2="50" opacity="0.5" />
+  </g>
+  {/* Punto centrale */}
+  <circle cx="50" cy="50" r="2.5" fill={color} />
+</svg>
+
+<style>
+  .hero-ornament {
+    display: inline-block;
+    filter: drop-shadow(0 2px 8px color-mix(in oklab, var(--color-gold) 30%, transparent));
+  }
+</style>

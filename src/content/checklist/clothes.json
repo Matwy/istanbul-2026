@@ -1,0 +1,12 @@
+{
+  "title": "Abbigliamento per moschee",
+  "icon": "shirt",
+  "order": 3,
+  "items": [
+    { "id": "clo-1", "label": "Foulard/velo per donne", "note": "Alcuni posti li prestano, ma meglio averne uno" },
+    { "id": "clo-2", "label": "Pantaloni lunghi o gonne lunghe" },
+    { "id": "clo-3", "label": "Top che copra le spalle" },
+    { "id": "clo-4", "label": "Scarpe facili da togliere", "note": "Obbligatorio togliersi per entrare in moschea" },
+    { "id": "clo-5", "label": "Giacca leggera (fine ottobre a Istanbul ~15°)" }
+  ]
+}

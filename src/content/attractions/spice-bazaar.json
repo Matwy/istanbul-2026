@@ -1,0 +1,15 @@
+{
+  "name": "Bazar delle Spezie",
+  "turkishName": "Mısır Çarşısı",
+  "lat": 41.0165,
+  "lng": 28.9705,
+  "priceEur": 0,
+  "priceTl": 0,
+  "bookOnline": false,
+  "shortDesc": "Mercato storico del XVII sec. accanto alla Moschea Nuova: spezie colorate, tè, lokum e baklava.",
+  "notes": "Vicino al Ponte di Galata. Aperto tutti i giorni. Prezzi fissi (no contrattazione). Assaggia prima di comprare.",
+  "dayId": "g3",
+  "category": "must",
+  "emoji": "🌶️",
+  "image": "/img/attractions/spice-bazaar.jpg"
+}

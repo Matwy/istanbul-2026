@@ -1,0 +1,12 @@
+{
+  "title": "Da sapere",
+  "icon": "info",
+  "order": 5,
+  "items": [
+    { "id": "know-1", "label": "Booking.com NON funziona in Turchia", "note": "Stampa o salva offline le prenotazioni prima di partire" },
+    { "id": "know-2", "label": "Pagare sempre con carta Revolut", "note": "1 € ≈ 53 TL (verifica il giorno)" },
+    { "id": "know-3", "label": "Contrattare al Gran Bazar", "note": "Parti dal 40% del prezzo chiesto. NON al Bazar delle Spezie (prezzi fissi)" },
+    { "id": "know-4", "label": "Attenzione ai borseggi", "note": "Soprattutto Gran Bazar, traghetti, metro nell'ora di punta" },
+    { "id": "know-5", "label": "Museum Pass Istanbul: 105 €", "note": "Fai i conti: conviene solo se visiti 4+ musei a pagamento" }
+  ]
+}

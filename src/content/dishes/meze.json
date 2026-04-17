@@ -1,0 +1,10 @@
+{
+  "name": "Meze",
+  "description": "Assortimento di antipasti freddi e caldi: hummus, melanzane, feta, polipetto, yogurt alle erbe. Si condividono al centro tavola.",
+  "badges": [
+    "da condividere"
+  ],
+  "emoji": "🫒",
+  "image": "/img/dishes/meze.jpg",
+  "order": 4
+}

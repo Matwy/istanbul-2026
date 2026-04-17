@@ -1,0 +1,322 @@
+---
+const pathname = Astro.url.pathname;
+
+const days = [
+  { href: '/giorno/1', label: 'Giorno 1 · Arrivo', date: '29 ott' },
+  { href: '/giorno/2', label: 'Giorno 2 · Cuore bizantino', date: '30 ott' },
+  { href: '/giorno/3', label: 'Giorno 3 · Bosforo e palazzi', date: '31 ott' },
+  { href: '/giorno/4', label: 'Giorno 4 · Lato asiatico', date: '1 nov' },
+  { href: '/giorno/5', label: 'Giorno 5 · Partenza', date: '2 nov' },
+];
+
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/mappa', label: 'Mappa' },
+  { href: '/checklist', label: 'Checklist' },
+  { href: '/cibo', label: 'Cibo' },
+  { href: '/quartieri', label: 'Quartieri' },
+  { href: '/trasporti', label: 'Trasporti' },
+];
+
+const isActive = (href: string) =>
+  href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(href + '/');
+
+const isGiornoActive = pathname.startsWith('/giorno/');
+const isHome = pathname === '/';
+---
+
+<header
+  id="site-header"
+  data-transparent={isHome ? 'true' : 'false'}
+  class="sticky top-0 z-50 transition-all duration-300"
+>
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6">
+    <a
+      href="/"
+      class="group flex items-center gap-2 font-[var(--font-display)] text-xl font-semibold tracking-tight transition-opacity hover:opacity-90 md:text-2xl"
+      aria-label="Istanbul 2026, torna alla home"
+    >
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-[var(--color-gold)]">
+        <path d="M12 2 L14.5 8 L21 9 L16 13.5 L17.5 20 L12 16.5 L6.5 20 L8 13.5 L3 9 L9.5 8 Z" />
+      </svg>
+      <span class="header-title">Istanbul <span class="text-[var(--color-gold)]">2026</span></span>
+    </a>
+
+    <nav aria-label="Navigazione principale" class="hidden items-center gap-1 md:flex">
+      <a
+        href="/"
+        aria-current={isActive('/') ? 'page' : undefined}
+        class:list={[
+          'header-link rounded-full px-3 py-2 text-sm font-medium transition-colors',
+          isActive('/') ? 'is-active' : '',
+        ]}
+      >
+        Home
+      </a>
+
+      <div class="relative" data-dropdown>
+        <button
+          type="button"
+          aria-expanded="false"
+          aria-controls="days-menu"
+          class:list={[
+            'header-link group inline-flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium transition-colors',
+            isGiornoActive ? 'is-active' : '',
+          ]}
+          data-dropdown-trigger
+        >
+          Giorni
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="transition-transform group-aria-expanded:rotate-180">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div
+          id="days-menu"
+          role="menu"
+          data-dropdown-menu
+          class="invisible absolute right-0 top-full mt-2 w-64 origin-top-right scale-95 rounded-xl border border-[color-mix(in_oklab,var(--color-iznik)_10%,transparent)] bg-[var(--color-paper)] p-2 opacity-0 shadow-[var(--shadow-card-hover)] transition-all duration-150"
+        >
+          {days.map((d) => (
+            <a
+              href={d.href}
+              role="menuitem"
+              aria-current={pathname === d.href ? 'page' : undefined}
+              class:list={[
+                'flex items-center justify-between rounded-lg px-3 py-2 text-sm text-[var(--color-ink)] transition-colors hover:bg-[color-mix(in_oklab,var(--color-iznik)_8%,transparent)]',
+                pathname === d.href && 'bg-[color-mix(in_oklab,var(--color-iznik)_10%,transparent)] font-medium',
+              ]}
+            >
+              <span>{d.label}</span>
+              <span class="text-xs text-[var(--color-ink-faint)]">{d.date}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {nav.slice(1).map((item) => (
+        <a
+          href={item.href}
+          aria-current={isActive(item.href) ? 'page' : undefined}
+          class:list={[
+            'header-link rounded-full px-3 py-2 text-sm font-medium transition-colors',
+            isActive(item.href) ? 'is-active' : '',
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <button
+      type="button"
+      id="menu-toggle"
+      aria-expanded="false"
+      aria-controls="mobile-drawer"
+      aria-label="Apri menu"
+      class="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-[color-mix(in_oklab,currentColor_20%,transparent)] text-current"
+    >
+      <svg data-icon="menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+      <svg data-icon="x" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hidden">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <div
+    id="mobile-drawer"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Menu di navigazione"
+    class="invisible fixed inset-0 top-0 z-40 flex flex-col bg-[var(--color-paper)] opacity-0 transition-opacity duration-200 md:hidden"
+  >
+    <div class="flex items-center justify-between px-4 py-3">
+      <span class="font-[var(--font-display)] text-xl font-semibold text-[var(--color-iznik-dark)]">
+        Istanbul <span class="text-[var(--color-gold)]">2026</span>
+      </span>
+      <button
+        type="button"
+        data-close-drawer
+        aria-label="Chiudi menu"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[color-mix(in_oklab,var(--color-iznik)_20%,transparent)] text-[var(--color-iznik)]"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <nav aria-label="Navigazione mobile" class="flex-1 overflow-y-auto px-4 pb-8">
+      <a
+        href="/"
+        aria-current={isActive('/') ? 'page' : undefined}
+        class:list={[
+          'block rounded-lg px-3 py-3 text-base font-medium text-[var(--color-iznik-dark)]',
+          isActive('/') && 'bg-[color-mix(in_oklab,var(--color-iznik)_10%,transparent)]',
+        ]}
+      >
+        Home
+      </a>
+      <details class="group mt-1" open={isGiornoActive}>
+        <summary class="flex cursor-pointer list-none items-center justify-between rounded-lg px-3 py-3 text-base font-medium text-[var(--color-iznik-dark)]">
+          Giorni
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="transition-transform group-open:rotate-180">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </summary>
+        <div class="mt-1 space-y-1 pl-3">
+          {days.map((d) => (
+            <a
+              href={d.href}
+              aria-current={pathname === d.href ? 'page' : undefined}
+              class:list={[
+                'flex items-center justify-between rounded-lg px-3 py-2 text-sm text-[var(--color-ink-soft)]',
+                pathname === d.href && 'bg-[color-mix(in_oklab,var(--color-iznik)_10%,transparent)] font-medium text-[var(--color-iznik)]',
+              ]}
+            >
+              <span>{d.label}</span>
+              <span class="text-xs text-[var(--color-ink-faint)]">{d.date}</span>
+            </a>
+          ))}
+        </div>
+      </details>
+      {nav.slice(1).map((item) => (
+        <a
+          href={item.href}
+          aria-current={isActive(item.href) ? 'page' : undefined}
+          class:list={[
+            'mt-1 block rounded-lg px-3 py-3 text-base font-medium text-[var(--color-iznik-dark)]',
+            isActive(item.href) && 'bg-[color-mix(in_oklab,var(--color-iznik)_10%,transparent)]',
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<style>
+  #site-header {
+    background-color: var(--color-paper);
+    color: var(--color-iznik-dark);
+    border-bottom: 1px solid color-mix(in oklab, var(--color-iznik) 8%, transparent);
+    backdrop-filter: blur(8px);
+  }
+  #site-header[data-transparent='true']:not([data-scrolled='true']) {
+    background-color: transparent;
+    color: var(--color-paper);
+    border-bottom-color: transparent;
+  }
+  #site-header[data-scrolled='true'] {
+    background-color: color-mix(in oklab, var(--color-paper) 92%, transparent);
+    color: var(--color-iznik-dark);
+    border-bottom-color: color-mix(in oklab, var(--color-iznik) 10%, transparent);
+  }
+  .header-link:hover {
+    background-color: color-mix(in oklab, currentColor 10%, transparent);
+  }
+  .header-link.is-active {
+    color: var(--color-gold);
+  }
+  #site-header[data-transparent='true']:not([data-scrolled='true']) .header-link.is-active {
+    color: var(--color-gold-bright);
+  }
+  [data-dropdown][data-open='true'] [data-dropdown-menu] {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+  }
+  body.drawer-open {
+    overflow: hidden;
+  }
+  #mobile-drawer[data-open='true'] {
+    visibility: visible;
+    opacity: 1;
+  }
+</style>
+
+<script>
+  function initHeader() {
+    const header = document.getElementById('site-header');
+    if (!header) return;
+
+    const updateScrolled = () => {
+      if (window.scrollY > 24) header.setAttribute('data-scrolled', 'true');
+      else header.removeAttribute('data-scrolled');
+    };
+    updateScrolled();
+    window.addEventListener('scroll', updateScrolled, { passive: true });
+
+    const dropdown = header.querySelector<HTMLElement>('[data-dropdown]');
+    const trigger = header.querySelector<HTMLButtonElement>('[data-dropdown-trigger]');
+    if (dropdown && trigger) {
+      const close = () => {
+        dropdown.removeAttribute('data-open');
+        trigger.setAttribute('aria-expanded', 'false');
+      };
+      const open = () => {
+        dropdown.setAttribute('data-open', 'true');
+        trigger.setAttribute('aria-expanded', 'true');
+      };
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (dropdown.hasAttribute('data-open')) close();
+        else open();
+      });
+      document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target as Node)) close();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') close();
+      });
+    }
+
+    const toggle = document.getElementById('menu-toggle') as HTMLButtonElement | null;
+    const drawer = document.getElementById('mobile-drawer');
+    const closeBtn = drawer?.querySelector<HTMLButtonElement>('[data-close-drawer]');
+    const menuIcon = toggle?.querySelector<SVGElement>('[data-icon="menu"]');
+    const xIcon = toggle?.querySelector<SVGElement>('[data-icon="x"]');
+
+    if (toggle && drawer) {
+      const openDrawer = () => {
+        drawer.setAttribute('data-open', 'true');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.setAttribute('aria-label', 'Chiudi menu');
+        document.body.classList.add('drawer-open');
+        menuIcon?.classList.add('hidden');
+        xIcon?.classList.remove('hidden');
+        const first = drawer.querySelector<HTMLElement>('a, button');
+        first?.focus();
+      };
+      const closeDrawer = () => {
+        drawer.removeAttribute('data-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Apri menu');
+        document.body.classList.remove('drawer-open');
+        menuIcon?.classList.remove('hidden');
+        xIcon?.classList.add('hidden');
+        toggle.focus();
+      };
+      toggle.addEventListener('click', () => {
+        if (drawer.hasAttribute('data-open')) closeDrawer();
+        else openDrawer();
+      });
+      closeBtn?.addEventListener('click', closeDrawer);
+      drawer.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        if (target.tagName === 'A') closeDrawer();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && drawer.hasAttribute('data-open')) closeDrawer();
+      });
+    }
+  }
+
+  initHeader();
+  document.addEventListener('astro:page-load', initHeader);
+</script>

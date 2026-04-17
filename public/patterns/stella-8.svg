@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <pattern id="stella" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="#C9A961" stroke-width="1.2" stroke-linejoin="round">
+        <!-- Stella a 8 punte: due quadrati sovrapposti ruotati -->
+        <path d="M60 12 L75 45 L108 60 L75 75 L60 108 L45 75 L12 60 L45 45 Z" />
+        <path d="M60 25 L70 50 L95 60 L70 70 L60 95 L50 70 L25 60 L50 50 Z" />
+        <circle cx="60" cy="60" r="3" fill="#C9A961" />
+        <!-- Elementi agli angoli per continuità tile -->
+        <path d="M0 0 L6 0 L0 6 Z" />
+        <path d="M120 0 L114 0 L120 6 Z" />
+        <path d="M0 120 L6 120 L0 114 Z" />
+        <path d="M120 120 L114 120 L120 114 Z" />
+      </g>
+    </pattern>
+  </defs>
+  <rect width="120" height="120" fill="url(#stella)" />
+</svg>

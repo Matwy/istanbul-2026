@@ -1,0 +1,10 @@
+{
+  "name": "Türk Kahvesi",
+  "description": "Caffè turco ristretto e denso, preparato nel cezve, servito con fondi. Si beve lentamente, senza rimescolare.",
+  "badges": [
+    "bevanda"
+  ],
+  "emoji": "☕",
+  "image": "/img/dishes/turk-kahvesi.jpg",
+  "order": 8
+}

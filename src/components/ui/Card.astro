@@ -1,0 +1,41 @@
+---
+interface Props {
+  href?: string;
+  class?: string;
+  as?: 'article' | 'div' | 'section';
+}
+const { href, class: cls = '', as = 'article' } = Astro.props;
+const Tag = href ? 'a' : as;
+const props: Record<string, unknown> = href ? { href } : {};
+---
+
+<Tag
+  {...props}
+  class:list={[
+    'card-base group relative block overflow-hidden rounded-[var(--radius-card)] bg-[var(--color-paper)] shadow-[var(--shadow-card)] transition-all duration-300',
+    href && 'hover:-translate-y-1 hover:shadow-[var(--shadow-card-hover)] focus-visible:-translate-y-1 focus-visible:shadow-[var(--shadow-card-hover)]',
+    cls,
+  ]}
+>
+  <slot />
+</Tag>
+
+<style>
+  .card-base {
+    border: 1px solid color-mix(in oklab, var(--color-iznik) 8%, transparent);
+  }
+  .card-base::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    box-shadow: var(--shadow-inset-gold);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .card-base:hover::after,
+  .card-base:focus-visible::after {
+    opacity: 1;
+  }
+</style>

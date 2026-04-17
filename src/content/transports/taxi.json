@@ -1,0 +1,8 @@
+{
+  "name": "Taxi / Uber / Bitaksi",
+  "turkishName": "Taksi",
+  "icon": "car",
+  "description": "Usa SEMPRE le app (Uber, Bitaksi): prezzo fisso visibile, nessuna sorpresa. Il taxi fermato al volo ti frega quasi sempre.",
+  "tips": "Scarica Uber e Bitaksi PRIMA di partire. Se proprio prendi un taxi giallo, pretendi il tassametro e controlla il percorso su Google Maps.",
+  "order": 5
+}

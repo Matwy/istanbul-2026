@@ -1,0 +1,74 @@
+/* tokens.css — design tokens per arbitrary values Tailwind (bg-[var(--...)]) */
+/* Complementa @theme in global.css con gradienti, tones per-pagina, shadows avanzate */
+
+:root {
+  /* ————— Gradienti tematici ————— */
+  /* Cielo Iznik: blu profondo → blu chiaro, come ceramica smaltata */
+  --gradient-iznik-sky: linear-gradient(
+    155deg,
+    #0F2444 0%,
+    #1B3A6B 40%,
+    #2E5A9E 85%,
+    #4A7BC8 100%
+  );
+
+  /* Oro caldo: dorature bizantine, per CTA e accent hero */
+  --gradient-gold-warm: linear-gradient(
+    135deg,
+    #A68548 0%,
+    #C9A961 50%,
+    #E6C478 100%
+  );
+
+  /* Bizantino: multi-stop iznik → garnet → oro, per sezioni celebrative */
+  --gradient-bizantino: linear-gradient(
+    125deg,
+    #0F2444 0%,
+    #1B3A6B 30%,
+    #8B2635 65%,
+    #C9A961 100%
+  );
+
+  /* Crema soffusa: per hero light e sezioni eleganti */
+  --gradient-paper-warm: linear-gradient(
+    180deg,
+    #FFFDF7 0%,
+    #F5EFE0 100%
+  );
+
+  /* Radiale oro soffuso: per spot di luce dietro elementi focali */
+  --gradient-gold-glow: radial-gradient(
+    circle at center,
+    color-mix(in oklab, #E6C478 35%, transparent) 0%,
+    transparent 70%
+  );
+
+  /* ————— Tone per-pagina (hero backgrounds semantici) ————— */
+  /* Usati per distinguere sezioni senza rompere la palette unificata */
+  --tone-home: var(--gradient-iznik-sky);
+  --tone-day: linear-gradient(160deg, #F5EFE0 0%, #FAF7F0 70%, #FFFDF7 100%);
+  --tone-map: linear-gradient(180deg, #FAF7F0 0%, #F5EFE0 100%);
+  --tone-day-1: linear-gradient(140deg, #FAF7F0 0%, color-mix(in oklab, #5A5A5A 8%, #F5EFE0) 100%);
+  --tone-day-2: linear-gradient(140deg, #FAF7F0 0%, color-mix(in oklab, #1B3A6B 10%, #F5EFE0) 100%);
+  --tone-day-3: linear-gradient(140deg, #FAF7F0 0%, color-mix(in oklab, #C9A961 14%, #F5EFE0) 100%);
+  --tone-day-4: linear-gradient(140deg, #FAF7F0 0%, color-mix(in oklab, #8B2635 10%, #F5EFE0) 100%);
+  --tone-day-5: linear-gradient(140deg, #FAF7F0 0%, color-mix(in oklab, #5A5A5A 8%, #F5EFE0) 100%);
+
+  /* ————— Shadows avanzate ————— */
+  --shadow-soft:
+    0 1px 2px rgb(27 58 107 / 0.05),
+    0 4px 12px -2px rgb(27 58 107 / 0.06);
+
+  --shadow-elevated:
+    0 4px 10px -2px rgb(27 58 107 / 0.08),
+    0 20px 48px -8px rgb(27 58 107 / 0.16),
+    0 2px 4px rgb(15 36 68 / 0.04);
+
+  --shadow-gold-glow:
+    0 0 0 1px color-mix(in oklab, #C9A961 35%, transparent),
+    0 4px 24px -4px color-mix(in oklab, #C9A961 40%, transparent),
+    0 0 40px -8px color-mix(in oklab, #E6C478 30%, transparent);
+
+  --shadow-press:
+    inset 0 2px 4px rgb(15 36 68 / 0.08);
+}

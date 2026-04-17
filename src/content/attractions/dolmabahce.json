@@ -1,0 +1,14 @@
+{
+  "name": "Palazzo Dolmabahçe",
+  "turkishName": "Dolmabahçe Sarayı",
+  "lat": 41.0391,
+  "lng": 29.0,
+  "priceEur": 52.1,
+  "priceTl": null,
+  "bookOnline": true,
+  "shortDesc": "Palazzo imperiale del 1856, ultimo centro amministrativo ottomano fino al 1922. Il più grande della Turchia.",
+  "notes": "Chiuso lunedì. Orari 9-17. Tanta fila, arriva all'apertura. Lampadario di cristallo più grande del mondo.",
+  "category": "optional",
+  "emoji": "🏰",
+  "image": "/img/attractions/dolmabahce.jpg"
+}

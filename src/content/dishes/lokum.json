@@ -1,0 +1,10 @@
+{
+  "name": "Lokum",
+  "description": "Turkish Delight: gelatine morbide aromatizzate a rose, pistacchio, limone o mastic. Ricoperte di zucchero a velo.",
+  "badges": [
+    "dolce"
+  ],
+  "emoji": "🍬",
+  "image": "/img/dishes/lokum.jpg",
+  "order": 10
+}

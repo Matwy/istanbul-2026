@@ -1,0 +1,15 @@
+{
+  "name": "Palazzo Topkapi + Harem",
+  "turkishName": "Topkapı Sarayı",
+  "lat": 41.0115,
+  "lng": 28.9833,
+  "priceEur": 65,
+  "priceTl": null,
+  "bookOnline": true,
+  "shortDesc": "Residenza dei sultani ottomani per quasi 400 anni. Tesori, Harem imperiale e vista sul Bosforo.",
+  "notes": "Chiuso martedì. Orari 9-18. Almeno 3 ore di visita. Prendi assolutamente anche il biglietto per l'Harem, vale la pena.",
+  "dayId": "g3",
+  "category": "must",
+  "emoji": "🏯",
+  "image": "/img/attractions/topkapi-palace.jpg"
+}

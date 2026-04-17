@@ -1,0 +1,23 @@
+---
+import { TRIP } from '@/lib/constants.ts';
+---
+
+<footer class="mt-16 border-t border-[color-mix(in_oklab,var(--color-iznik)_10%,transparent)] bg-[var(--color-surface)]">
+  <div class="mx-auto max-w-6xl px-4 py-10 md:px-6">
+    <div class="divider-ornament mb-6" aria-hidden="true">
+      <img src="/patterns/divider.svg" alt="" width="72" height="16" loading="lazy" />
+    </div>
+
+    <div class="flex flex-col items-center gap-3 text-center">
+      <p class="font-[var(--font-display)] text-xl text-[var(--color-iznik-dark)]">
+        {TRIP.title}
+      </p>
+      <p class="text-sm text-[var(--color-ink-soft)]">
+        Fatto per la famiglia · Istanbul · {TRIP.startLabel} – {TRIP.endLabel} {TRIP.year}
+      </p>
+      <p class="text-xs text-[var(--color-ink-faint)]">
+        Dati indicativi, verifica sempre prezzi e orari prima di partire.
+      </p>
+    </div>
+  </div>
+</footer>

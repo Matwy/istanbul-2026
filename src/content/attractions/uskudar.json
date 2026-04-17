@@ -1,0 +1,15 @@
+{
+  "name": "Üsküdar",
+  "turkishName": "Üsküdar",
+  "lat": 41.0233,
+  "lng": 29.0151,
+  "priceEur": 0,
+  "priceTl": 0,
+  "bookOnline": false,
+  "shortDesc": "Quartiere storico conservatore del lato asiatico, con moschee ottomane antiche e atmosfera tradizionale.",
+  "notes": "Traghetto da Eminönü. Ideale per passeggiata al tramonto: vista sulla Torre della Fanciulla e sulla riva europea.",
+  "dayId": "g4",
+  "category": "must",
+  "emoji": "🕌",
+  "image": "/img/attractions/uskudar.jpg"
+}

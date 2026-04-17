@@ -1,0 +1,10 @@
+{
+  "name": "Lahmacun",
+  "description": "Pizza turca sottilissima con carne macinata speziata, pomodoro, prezzemolo. Si arrotola con limone e foglie di insalata.",
+  "badges": [
+    "street food"
+  ],
+  "emoji": "🫓",
+  "image": "/img/dishes/lahmacun.jpg",
+  "order": 5
+}

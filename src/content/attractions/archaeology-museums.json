@@ -1,0 +1,14 @@
+{
+  "name": "Musei Archeologici",
+  "turkishName": "Arkeoloji Müzesi",
+  "lat": 41.0116,
+  "lng": 28.9811,
+  "priceEur": 15,
+  "priceTl": null,
+  "bookOnline": true,
+  "shortDesc": "Tre musei in uno: Archeologia, Antico Oriente e Ceramiche. Tra i più ricchi al mondo, spesso trascurato dai turisti.",
+  "notes": "Tranquillo, ideale per sfuggire alla folla. Alcune sale in restauro. Sarcofago di Alessandro imperdibile.",
+  "category": "optional",
+  "emoji": "🏺",
+  "image": "/img/attractions/archaeology-museums.jpg"
+}

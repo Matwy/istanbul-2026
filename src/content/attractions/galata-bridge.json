@@ -1,0 +1,15 @@
+{
+  "name": "Ponte di Galata",
+  "turkishName": "Galata Köprüsü",
+  "lat": 41.0199,
+  "lng": 28.9739,
+  "priceEur": null,
+  "priceTl": null,
+  "bookOnline": false,
+  "shortDesc": "Ponte a due livelli che collega Eminönü a Karaköy attraverso il Corno d'Oro: pescatori sopra, ristoranti sotto.",
+  "notes": "Magnifico al tramonto con il richiamo alla preghiera e i minareti contro la luce rossa. Prova il balık ekmek qui.",
+  "dayId": "g4",
+  "category": "must",
+  "emoji": "🌉",
+  "image": "/img/attractions/galata-bridge.jpg"
+}

@@ -1,0 +1,113 @@
+---
+/**
+ * Ornament — divisore decorativo riutilizzabile
+ * Stella 8 punte oro al centro + linee sfumate ai lati (variante `full`)
+ * Versione `compact` senza linee, solo stella
+ * Versione `corner` piccolo ornamento angolare
+ */
+interface Props {
+  variant?: 'full' | 'compact' | 'corner';
+  color?: string;
+  class?: string;
+  label?: string;
+}
+const {
+  variant = 'full',
+  color = 'var(--color-gold)',
+  class: cls = '',
+  label,
+} = Astro.props;
+---
+
+{
+  variant === 'full' && (
+    <div
+      class:list={['ornament-full', cls]}
+      role={label ? 'img' : 'presentation'}
+      aria-label={label}
+      aria-hidden={label ? undefined : 'true'}
+    >
+      <span class="ornament-line" aria-hidden="true" />
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 28 28"
+        fill="none"
+        aria-hidden="true"
+      >
+        <g stroke={color} stroke-width="1" stroke-linejoin="round" fill="none">
+          <path d="M14 2 L17 11 L26 14 L17 17 L14 26 L11 17 L2 14 L11 11 Z" />
+          <path d="M14 7 L15.5 12.5 L21 14 L15.5 15.5 L14 21 L12.5 15.5 L7 14 L12.5 12.5 Z" fill={color} fill-opacity="0.15" />
+        </g>
+        <circle cx="14" cy="14" r="1.5" fill={color} />
+      </svg>
+      <span class="ornament-line" aria-hidden="true" />
+    </div>
+  )
+}
+
+{
+  variant === 'compact' && (
+    <div
+      class:list={['ornament-compact', cls]}
+      role={label ? 'img' : 'presentation'}
+      aria-label={label}
+      aria-hidden={label ? undefined : 'true'}
+    >
+      <svg width="20" height="20" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path
+          d="M14 2 L17 11 L26 14 L17 17 L14 26 L11 17 L2 14 L11 11 Z"
+          stroke={color}
+          stroke-width="1.2"
+          stroke-linejoin="round"
+          fill={color}
+          fill-opacity="0.18"
+        />
+      </svg>
+    </div>
+  )
+}
+
+{
+  variant === 'corner' && (
+    <div
+      class:list={['ornament-corner', cls]}
+      aria-hidden="true"
+    >
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M7 0 L9 5 L14 7 L9 9 L7 14 L5 9 L0 7 L5 5 Z" fill={color} />
+      </svg>
+    </div>
+  )
+}
+
+<style>
+  .ornament-full {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 320px;
+    margin-inline: auto;
+  }
+  .ornament-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      color-mix(in oklab, var(--color-gold) 70%, transparent),
+      transparent
+    );
+  }
+  .ornament-compact {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ornament-corner {
+    display: inline-flex;
+    opacity: 0.85;
+  }
+</style>

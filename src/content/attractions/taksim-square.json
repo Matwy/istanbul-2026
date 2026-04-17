@@ -1,0 +1,15 @@
+{
+  "name": "Piazza Taksim",
+  "turkishName": "Taksim Meydanı",
+  "lat": 41.037,
+  "lng": 28.9857,
+  "priceEur": null,
+  "priceTl": null,
+  "bookOnline": false,
+  "shortDesc": "Piazza simbolo della Istanbul moderna, con il monumento alla Repubblica e la nuova moschea di Taksim.",
+  "notes": "Punto di riferimento per orientarsi. Hub dei trasporti: metro M2, funicolare F1 per Kabataş.",
+  "dayId": "g2",
+  "category": "must",
+  "emoji": "🏛️",
+  "image": "/img/attractions/taksim-square.jpg"
+}

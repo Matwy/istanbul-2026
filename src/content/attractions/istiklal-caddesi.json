@@ -1,0 +1,15 @@
+{
+  "name": "Via Istiklal",
+  "turkishName": "İstiklal Caddesi",
+  "lat": 41.0336,
+  "lng": 28.9777,
+  "priceEur": null,
+  "priceTl": null,
+  "bookOnline": false,
+  "shortDesc": "Via pedonale principale di Beyoğlu, 1.4 km di negozi, caffè storici e il celebre tram rosso T2.",
+  "notes": "Cuore della vita notturna. Percorri tutta fino a Piazza Taksim. Prova il tram storico se c'è poca folla.",
+  "dayId": "g2",
+  "category": "must",
+  "emoji": "🚋",
+  "image": "/img/attractions/istiklal-caddesi.jpg"
+}

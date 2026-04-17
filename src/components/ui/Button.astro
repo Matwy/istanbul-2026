@@ -1,0 +1,56 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'sm' | 'md';
+  target?: string;
+  rel?: string;
+  class?: string;
+  type?: 'button' | 'submit' | 'reset';
+  'aria-label'?: string;
+}
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  target,
+  rel,
+  class: cls = '',
+  type = 'button',
+  'aria-label': ariaLabel,
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+const variantClass = {
+  primary:
+    'bg-[var(--color-iznik)] text-[var(--color-paper)] hover:bg-[var(--color-iznik-dark)] border-[var(--color-iznik)] shadow-[inset_0_-2px_0_rgb(0_0_0/0.1)]',
+  secondary:
+    'bg-[var(--color-gold)] text-[var(--color-iznik-dark)] hover:bg-[var(--color-gold-bright)] border-[var(--color-gold)]',
+  ghost:
+    'bg-transparent text-[var(--color-iznik)] hover:bg-[color-mix(in_oklab,var(--color-iznik)_8%,transparent)] border-[color-mix(in_oklab,var(--color-iznik)_25%,transparent)]',
+}[variant];
+
+const sizeClass = {
+  sm: 'px-3 py-2 text-sm gap-1.5',
+  md: 'px-5 py-2.5 text-sm gap-2',
+}[size];
+
+const props: Record<string, unknown> = href
+  ? { href, target, rel: rel ?? (target === '_blank' ? 'noopener noreferrer' : undefined) }
+  : { type };
+---
+
+<Tag
+  {...props}
+  aria-label={ariaLabel}
+  class:list={[
+    'inline-flex items-center justify-center rounded-full border font-medium transition-all duration-200 whitespace-nowrap',
+    'focus-visible:outline-2 focus-visible:outline-[var(--color-gold)] focus-visible:outline-offset-2',
+    'active:scale-[0.98]',
+    variantClass,
+    sizeClass,
+    cls,
+  ]}
+>
+  <slot />
+</Tag>

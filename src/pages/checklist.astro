@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Checklist from '@/components/Checklist.svelte';
+
+const categoriesRaw = await getCollection('checklist');
+const categories = categoriesRaw
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((c) => ({
+    title: c.data.title,
+    icon: c.data.icon,
+    order: c.data.order,
+    items: c.data.items,
+  }));
+const total = categories.reduce((sum, c) => sum + c.items.length, 0);
+---
+
+<Base
+  title="Checklist"
+  description="Tutto quello da preparare, controllare e portare per la gita a Istanbul. Stato salvato sul tuo browser."
+>
+  <section class="mx-auto max-w-4xl px-4 pt-12 pb-8 md:px-6 md:pt-16">
+    <header class="max-w-2xl">
+      <p class="text-xs font-medium uppercase tracking-[0.25em] text-[var(--color-gold-deep)]">
+        Prima di partire
+      </p>
+      <h1 class="mt-2 font-[var(--font-display)] text-5xl font-semibold text-[var(--color-iznik-dark)] md:text-6xl">
+        Checklist
+      </h1>
+      <p class="mt-3 text-[var(--color-ink-soft)]">
+        {total} cose da fare o portare, divise in {categories.length} categorie. Spunta man mano.
+      </p>
+      <p class="mt-2 text-xs text-[var(--color-ink-faint)]">
+        Lo stato è salvato nel browser (localStorage): se cambi dispositivo ricomincerai da capo.
+      </p>
+    </header>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-4 pb-16 md:px-6">
+    <Checklist client:load categories={categories} />
+  </section>
+</Base>

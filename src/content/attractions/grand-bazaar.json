@@ -1,0 +1,15 @@
+{
+  "name": "Gran Bazar",
+  "turkishName": "Kapalıçarşı",
+  "lat": 41.0106,
+  "lng": 28.9681,
+  "priceEur": 0,
+  "priceTl": 0,
+  "bookOnline": false,
+  "shortDesc": "Uno dei mercati coperti più antichi e grandi del mondo, oltre 4000 negozi su 60 strade.",
+  "notes": "Chiuso la domenica. Contrattare è d'obbligo: parti dal 40% del prezzo offerto. Attenzione ai borseggi nelle ore di punta.",
+  "dayId": "g2",
+  "category": "must",
+  "emoji": "🛍️",
+  "image": "/img/attractions/grand-bazaar.jpg"
+}

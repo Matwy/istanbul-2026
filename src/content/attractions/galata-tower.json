@@ -1,0 +1,15 @@
+{
+  "name": "Torre di Galata",
+  "turkishName": "Galata Kulesi",
+  "lat": 41.0256,
+  "lng": 28.9741,
+  "priceEur": 30,
+  "priceTl": null,
+  "bookOnline": true,
+  "shortDesc": "Torre medievale genovese del 1348, 67 m di altezza. Panorama a 360° sul Bosforo e la città vecchia.",
+  "notes": "Coda lunga nelle ore di punta. Molti consigliano di apprezzarla dal basso e risparmiare i 30 €. Tramonto spettacolare.",
+  "dayId": "g4",
+  "category": "must",
+  "emoji": "🗼",
+  "image": "/img/attractions/galata-tower.jpg"
+}

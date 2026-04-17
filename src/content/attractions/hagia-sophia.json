@@ -1,0 +1,15 @@
+{
+  "name": "Hagia Sophia",
+  "turkishName": "Ayasofya",
+  "lat": 41.0086,
+  "lng": 28.9802,
+  "priceEur": 25,
+  "priceTl": null,
+  "bookOnline": true,
+  "shortDesc": "Basilica del VI sec., poi moschea, oggi ancora moschea. Mosaici bizantini e minareti mozzafiato.",
+  "notes": "Chiusa ~90 min per preghiera (5 volte al giorno). Velo obbligatorio per donne. Vai prestissimo al mattino per evitare la fila. Consigliato biglietto salta-fila.",
+  "dayId": "g2",
+  "category": "must",
+  "emoji": "🕌",
+  "image": "/img/attractions/hagia-sophia.jpg"
+}

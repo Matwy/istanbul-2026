@@ -1,0 +1,15 @@
+{
+  "name": "Kadıköy",
+  "turkishName": "Kadıköy",
+  "lat": 40.9903,
+  "lng": 29.0275,
+  "priceEur": 0,
+  "priceTl": 0,
+  "bookOnline": false,
+  "shortDesc": "Quartiere bohémien del lato asiatico: mercato coperto, street food, bar, locali autentici, murales.",
+  "notes": "Raggiungibile in traghetto da Eminönü (20 min, bellissimo). Vai la mattina per il mercato, torna la sera per i locali.",
+  "dayId": "g4",
+  "category": "must",
+  "emoji": "🌊",
+  "image": "/img/attractions/kadikoy.jpg"
+}

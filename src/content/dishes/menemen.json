@@ -1,0 +1,10 @@
+{
+  "name": "Menemen",
+  "description": "Uova strapazzate con pomodoro, peperoni verdi, cipolla e spezie. Servito in padella di ghisa con pane caldo.",
+  "badges": [
+    "colazione"
+  ],
+  "emoji": "🍳",
+  "image": "/img/dishes/menemen.jpg",
+  "order": 6
+}
